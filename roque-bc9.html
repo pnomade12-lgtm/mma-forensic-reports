@@ -5,114 +5,137 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.55; padding:24px 16px; }
-.wrap { max-width:780px; margin:0 auto; }
-.subtitle { font-size:1.55em; color:#fff; font-weight:bold; margin-bottom:4px; }
-.meta { color:#777; font-size:0.88em; margin-bottom:20px; padding-bottom:14px; border-bottom:1px solid #222; }
-.lede { background:#1a1815; border-left:4px solid #ffb84d; padding:14px 18px; margin:14px 0; border-radius:0 6px 6px 0; }
-.lede.cool { background:#15212a; border-left-color:#7fc8ff; }
-.lede .h { font-size:1.12em; color:#fff; font-weight:bold; margin-bottom:4px; }
-.lede .b { font-size:0.93em; color:#bbb; }
-.tbl-cap { font-size:1.05em; font-weight:bold; color:#fff; margin:28px 0 8px; padding:8px 12px; background:linear-gradient(90deg,#1e3a5f 0%,#1a1a1a 100%); border-left:4px solid #6699cc; border-radius:4px; }
-.tbl-cap.total { background:linear-gradient(90deg,#5a3a18 0%,#1a1a1a 100%); border-left-color:#ffb84d; }
-.pills { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 10px; }
-.pill { padding:5px 11px; border-radius:14px; font-size:0.88em; background:#222; color:#ccc; }
-.pill.left  { background:#1a3a4a; color:#7fc8ff; }
-.pill.right { background:#4a2818; color:#ffaa70; }
-.pill.side  { background:#2a2a2a; color:#aaa; }
-.pill.total { background:#1a1a1a; border:1px solid #444; color:#fff; }
-.ev { width:100%; border-collapse:collapse; font-size:0.92em; margin:4px 0 10px; }
-.ev th { background:#222; color:#ffb84d; padding:8px; text-align:left; border-bottom:2px solid #333; }
-.ev td { padding:7px 8px; border-bottom:1px solid #1f1f1f; vertical-align:middle; }
-.ev tr.clinch td { background:rgba(150,100,200,0.06); }
-.ev td.right { color:#ffaa70; font-weight:bold; }
+body { font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.5; padding:24px 16px; }
+.wrap { max-width:760px; margin:0 auto; }
+.title { font-size:0.95em; color:#888; letter-spacing:0.05em; margin-bottom:4px; }
+.subtitle { font-size:1.45em; color:#fff; font-weight:bold; line-height:1.3; }
+.meta { color:#666; font-size:0.85em; margin:6px 0 22px; padding-bottom:14px; border-bottom:1px solid #222; }
+
+.hero { background:linear-gradient(135deg,#1e3a5f 0%,#0d1a2a 100%); padding:24px 22px; border-radius:10px; margin:18px 0 24px; }
+.hero .label { font-size:0.75em; color:#7fc8ff; letter-spacing:0.12em; font-weight:bold; margin-bottom:8px; }
+.hero .h { font-size:1.5em; color:#fff; font-weight:bold; line-height:1.4; }
+.hero .h b.l { color:#7fc8ff; }
+.hero .h b.r { color:#ffaa70; }
+
+.diptych { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
+.dp { background:#141414; border-radius:10px; padding:18px 18px 16px; border-top:3px solid #444; }
+.dp.dist   { border-top-color:#7fc8ff; }
+.dp.clinch { border-top-color:#ff9a6a; }
+.dp .name { font-size:0.83em; color:#888; letter-spacing:0.05em; margin-bottom:6px; }
+.dp .big  { font-size:2.2em; font-weight:bold; color:#fff; line-height:1; margin-bottom:10px; }
+.dp .big .sub { font-size:0.4em; color:#888; font-weight:normal; margin-left:4px; }
+.dp .bars { display:flex; flex-direction:column; gap:6px; margin-top:8px; }
+.dp .bar { display:flex; align-items:center; gap:8px; font-size:0.85em; }
+.dp .bar .lbl { width:80px; color:#aaa; }
+.dp .bar .fill { flex:1; background:#222; border-radius:3px; height:18px; position:relative; overflow:hidden; }
+.dp .bar .fill > div { height:100%; background:#7fc8ff; border-radius:3px; }
+.dp .bar.r .fill > div { background:#ffaa70; }
+.dp .bar.b .fill > div { background:#888; }
+.dp .bar .n { width:30px; text-align:right; font-weight:bold; color:#fff; }
+
+.outcomerow { background:#15212a; padding:16px 18px; border-radius:8px; margin:14px 0; border-left:3px solid #7fc8ff; }
+.outcomerow .h { font-size:0.85em; color:#7fc8ff; letter-spacing:0.05em; margin-bottom:8px; }
+.outcomerow .nums { display:flex; gap:18px; align-items:baseline; flex-wrap:wrap; }
+.outcomerow .n { font-size:1.4em; color:#fff; font-weight:bold; }
+.outcomerow .n .lbl { font-size:0.55em; color:#999; font-weight:normal; margin-left:4px; }
+.outcomerow .zero { color:#ff6a3a; }
+
+h2 { font-size:0.85em; color:#888; letter-spacing:0.1em; margin:30px 0 8px; text-transform:uppercase; font-weight:normal; }
+
+.ev { width:100%; border-collapse:collapse; font-size:0.88em; margin:6px 0; }
+.ev th { background:#1a1a1a; color:#ffb84d; padding:8px; text-align:left; border-bottom:2px solid #333; font-weight:normal; }
+.ev td { padding:6px 8px; border-bottom:1px solid #1a1a1a; }
+.ev tr.clinch td { background:rgba(255,154,106,0.05); }
 .ev td.left  { color:#7fc8ff; font-weight:bold; }
+.ev td.right { color:#ffaa70; font-weight:bold; }
 .ev td.side  { color:#aaa; }
-.ev td.na    { color:#555; }
-h2 { font-size:1.0em; color:#888; letter-spacing:0.06em; margin:30px 0 8px; text-transform:uppercase; font-weight:normal; }
-.fact { background:#1a1a1a; padding:10px 14px; border-radius:6px; margin:6px 0; font-size:0.94em; }
-.fact b { color:#ffd86b; }
-.warn { background:#1f1815; border-left:3px solid #c5664a; padding:12px 16px; border-radius:0 4px 4px 0; margin:16px 0; font-size:0.88em; color:#ddd; }
-.warn .h { color:#ff9a6a; font-weight:bold; font-size:0.85em; letter-spacing:0.05em; margin-bottom:4px; }
-.empty { background:#1a1a1a; padding:14px; text-align:center; color:#777; font-style:italic; border-radius:4px; }
+.ev td.na    { color:#444; }
+
+.note { font-size:0.82em; color:#777; margin:8px 0; line-height:1.5; }
 .footer { margin-top:36px; padding-top:14px; border-top:1px solid #222; color:#555; font-size:0.78em; }
 </style></head><body><div class="wrap">
 
-<div class="subtitle">Roque 손 타격 — 어느 스탠스 · 어느 손 · 어디</div>
-<div class="meta">BC 9 · 2023-11-18 · 라벨 19발 · 60fps 시각 + pose 자료 통합</div>
+<div class="title">FORENSIC · 손 타격 패턴</div>
+<div class="subtitle">Roque Martinez vs Tserendash Azjargal</div>
+<div class="meta">BC 9 · 2023-11-18 · 라벨 19건 · 60fps 영상 + YOLOv8 pose 자료</div>
 
-<div class="lede">
-<div class="h">베이스 스탠스 = 오소독스</div>
-<div class="b">R1 시작 5초 — 왼발 앞 13/13. 흔들리지 않는 베이스.</div>
+<div class="hero">
+<div class="label">▸ 한 줄 발견</div>
+<div class="h">거리에선 <b class="l">왼손</b>만 · 클린치 안에선 <b class="r">오른손</b>만</div>
 </div>
 
-<div class="lede cool">
-<div class="h">"19발 펀치"의 정체</div>
-<div class="b">5fps 라벨엔 19발 전부 standing strike. 60fps 풀로 보면:<br>
-&nbsp;&nbsp;• <b>스탠딩 단발/셋업 펀치</b> 12발<br>
-&nbsp;&nbsp;• <b>클린치 안 손 타격</b> 4발 (dirty boxing)<br>
-&nbsp;&nbsp;• <b>클린치 진입 동작</b> 3건 (펀치 X — 그립 진입 손 push)
+<div class="diptych">
+<div class="dp dist">
+<div class="name">거리 둔 펀치 (12건)</div>
+<div class="big">8<span class="sub">왼손</span> / 0<span class="sub">오른손</span></div>
+<div class="bars">
+<div class="bar"><span class="lbl">왼손</span><span class="fill"><div style="width:67%;"></div></span><span class="n">8</span></div>
+<div class="bar r"><span class="lbl">오른손</span><span class="fill"><div style="width:0%;"></div></span><span class="n">0</span></div>
+<div class="bar b"><span class="lbl">양손 동시</span><span class="fill"><div style="width:33%;"></div></span><span class="n">4</span></div>
 </div>
 </div>
 
-<div class="tbl-cap total">📊 전체 — 진짜 손 타격 16발 어느 손?</div>
-<h3 style="font-size:0.9em;color:#999;margin:6px 0;">스탠딩 펀치 (12발)</h3>
-<div class="pills"><span class="pill left">왼손 <b>8</b></span><span class="pill side">양손 동시 <b>4</b></span><span class="pill total">합 12</span></div>
-<h3 style="font-size:0.9em;color:#999;margin:6px 0;">클린치 안 손 타격 (4발)</h3>
-<div class="pills"><span class="pill right">오른손 <b>4</b></span><span class="pill total">합 4</span></div>
+<div class="dp clinch">
+<div class="name">클린치 안 손 타격 (4건)</div>
+<div class="big">0<span class="sub">왼손</span> / 4<span class="sub">오른손</span></div>
+<div class="bars">
+<div class="bar"><span class="lbl">왼손</span><span class="fill"><div style="width:0%;"></div></span><span class="n">0</span></div>
+<div class="bar r"><span class="lbl">오른손</span><span class="fill"><div style="width:100%;"></div></span><span class="n">4</span></div>
+</div>
+</div>
+</div>
 
-<div class="tbl-cap">R1 (10건)</div>
-<table class="ev"><tr><th>경과</th><th>유형</th><th>손</th><th>부위 · 결과</th></tr>
-<tr class="standing"><td>0:10</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 회피</td></tr>
-<tr class="standing"><td>1:18</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 가드</td></tr>
-<tr class="standing"><td>1:36</td><td>단발 펀치</td><td class="side">양손 동시</td><td>머리 · 가드</td></tr>
-<tr class="standing"><td>1:38</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 회피</td></tr>
-<tr class="standing"><td>1:39</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 가드</td></tr>
-<tr class="standing"><td>1:42</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 미스 (거리)</td></tr>
-<tr class="standing"><td>3:24</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 부분 적중</td></tr>
-<tr class="clinch"><td>1:19</td><td>클린치 안 hook</td><td class="right">오른손</td><td>머리 · 가드</td></tr>
-<tr class="clinch"><td>0:12</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X (그립 진입)</td></tr>
-<tr class="clinch"><td>1:19</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X (entry 동작)</td></tr>
+<div class="outcomerow">
+<div class="h">▸ 16건 실제 손 타격 — 결과</div>
+<div class="nums">
+<span class="n zero">0<span class="lbl">클린 적중</span></span>
+<span class="n">11<span class="lbl">가드</span></span>
+<span class="n">3<span class="lbl">회피</span></span>
+<span class="n">1<span class="lbl">부분 적중</span></span>
+<span class="n">1<span class="lbl">미스</span></span>
+</div>
+<div class="note" style="margin-top:8px; color:#bbb;">모두 머리 방향 (몸통·다리 시도 0). Azza의 가드·헤드 무브가 모든 손 타격을 막거나 회피.</div>
+</div>
+
+<h2>베이스 스탠스</h2>
+<div class="outcomerow" style="border-left-color:#5fe07d;">
+<div class="h" style="color:#5fe07d;">▸ 오소독스 (왼발 앞)</div>
+<div class="nums"><span class="n">100%<span class="lbl">R1 시작 5초 (13/13)</span></span></div>
+<div class="note" style="margin-top:6px;">전 경기 흔들림 없는 베이스. 사우스포 전환 사건 없음 (검증된 사건 한해).</div>
+</div>
+
+<h2>사건 디테일 (19건)</h2>
+<table class="ev"><tr><th>경과</th><th>유형</th><th>손</th><th>결과</th></tr>
+<tr class="dist"><td>R1 0:10</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 회피</td></tr>
+<tr class="clinch"><td>R1 0:12</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X</td></tr>
+<tr class="dist"><td>R1 1:18</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 가드</td></tr>
+<tr class="clinch"><td>R1 1:19</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X</td></tr>
+<tr class="clinch"><td>R1 1:19</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
+<tr class="dist"><td>R1 1:36</td><td>거리 펀치</td><td class="side">양손 동시</td><td>머리 가드</td></tr>
+<tr class="dist"><td>R1 1:38</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 회피</td></tr>
+<tr class="dist"><td>R1 1:39</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 가드</td></tr>
+<tr class="dist"><td>R1 1:42</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 미스</td></tr>
+<tr class="dist"><td>R1 3:24</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 부분 적중</td></tr>
+<tr class="dist"><td>R2 0:03</td><td>거리 펀치</td><td class="side">양손 동시</td><td>머리 가드</td></tr>
+<tr class="dist"><td>R2 0:06</td><td>거리 펀치 (셋업)</td><td class="side">양손 동시</td><td>머리 가드 → 클린치</td></tr>
+<tr class="clinch"><td>R2 1:12</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
+<tr class="dist"><td>R2 2:15</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 가드</td></tr>
+<tr class="clinch"><td>R2 4:31</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
+<tr class="clinch"><td>R2 4:33</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
+<tr class="clinch"><td>R2 4:41</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X</td></tr>
+<tr class="dist"><td>R2 4:43</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 회피</td></tr>
+<tr class="dist"><td>R2 4:50</td><td>거리 펀치 (셋업)</td><td class="side">양손 동시</td><td>머리 가드 → 클린치</td></tr>
 </table>
 
-<div class="tbl-cap">R2 (9건)</div>
-<table class="ev"><tr><th>경과</th><th>유형</th><th>손</th><th>부위 · 결과</th></tr>
-<tr class="standing"><td>0:03</td><td>단발 펀치</td><td class="side">양손 동시</td><td>머리 · 가드</td></tr>
-<tr class="standing"><td>0:06</td><td>셋업 펀치</td><td class="side">양손 동시</td><td>머리 · 가드 → 클린치 진입</td></tr>
-<tr class="standing"><td>2:15</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 가드</td></tr>
-<tr class="standing"><td>4:43</td><td>단발 펀치</td><td class="left">왼손</td><td>머리 · 회피</td></tr>
-<tr class="standing"><td>4:50</td><td>셋업 펀치</td><td class="side">양손 동시</td><td>머리 · 가드 → 클린치 진입</td></tr>
-<tr class="clinch"><td>1:12</td><td>클린치 안 hook</td><td class="right">오른손</td><td>머리 · 가드</td></tr>
-<tr class="clinch"><td>4:31</td><td>클린치 안 dirty</td><td class="right">오른손</td><td>머리 · 가드</td></tr>
-<tr class="clinch"><td>4:33</td><td>클린치 안 hook</td><td class="right">오른손</td><td>머리 · 가드</td></tr>
-<tr class="clinch"><td>4:41</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X (boundary)</td></tr>
-</table>
-
-<div class="tbl-cap">R3 (0건)</div>
-<div class="empty">스탠딩 손 타격 라벨 없음 — 그라운드 위주 라운드</div>
-
-<h2>핵심 발견</h2>
-<div class="fact">
-1. <b>Roque 스탠딩 거리 펀치는 왼손 위주</b> — 명확 분류된 8발 모두 왼손 (앞손). 거리 둔 오른손 단발 명확 사건 0.
-</div>
-<div class="fact">
-2. <b>Roque의 오른손은 클린치 안에서만</b> — 클린치 안 4발 모두 오른손. 거리 둔 cross 시도 X.
-</div>
-<div class="fact">
-3. <b>모든 손 타격 = 머리 only</b> — 19발 전부 머리 방향. 몸통·다리 손 타격 시도 0.
-</div>
-<div class="fact">
-4. <b>적중 0 · 가드 또는 회피</b> — 16발의 진짜 손 타격 중 클린 적중 없음. 가드 (블록) 다수 · 회피(slipped) 4발 · 부분 적중 1발 · 미스 1발.
-</div>
-
-<div class="warn">
-<div class="h">▸ "양손 동시" 표기 의미</div>
-4발은 사건 시점 ±0.25초 안에 60fps pose 자료상 양 wrist 모두 상대 방향으로 펴짐 (한 손은 펀치, 다른 손은 가드·잡기 동시 동작). 단발 펀치로 어느 손인지 분류 자체가 의미 없는 사건. 결과 (부위 · 가드/회피)는 명확.
+<div class="note" style="margin-top:14px;">
+<b style="color:#aaa;">"양손 동시" 의미</b> — 사건 시점 ±0.25초 안에 양 wrist가 모두 상대 방향으로 펴짐. 한 손은 펀치, 다른 손은 가드·잡기 동시 동작. 단발 펀치로 어느 손인지 분류 자체가 의미 없는 4건.<br><br>
+<b style="color:#aaa;">"클린치 entry" 의미</b> — 라벨엔 strike로 등록됐지만 60fps에서 보면 펀치가 아니라 클린치 그립 진입 동작에 손을 사용한 사건 3건. 펀치 카운트에서 제외.
 </div>
 
 <div class="footer">
-영상: BLACK COMBAT 9 공식 4K · trimmed.mp4 60fps · 분석 1회<br>
-이 보고는 fight_01 (5경기 시리즈 1/5). 손 패턴 시그니처 = 5경기 누적 후 확정.
+영상: BLACK COMBAT 9 공식 4K · trimmed.mp4 60fps<br>
+분석: YOLOv8m-pose 풀 추출 (5fps 4500 + 옆모습 6사건 60fps 1440)<br>
+fight_01 (5경기 시리즈 1/5). 손 패턴 시그니처 확정 = 5경기 누적 후
 </div>
 
 </div></body></html>
