@@ -1,141 +1,173 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
 <meta charset="utf-8">
-<title>Roque 손 타격 분석 · BC 9</title>
+<title>Forensic Fight Report · Roque Martinez vs Tserendash Azjargal</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.5; padding:24px 16px; }
-.wrap { max-width:760px; margin:0 auto; }
-.title { font-size:0.95em; color:#888; letter-spacing:0.05em; margin-bottom:4px; }
-.subtitle { font-size:1.45em; color:#fff; font-weight:bold; line-height:1.3; }
-.meta { color:#666; font-size:0.85em; margin:6px 0 22px; padding-bottom:14px; border-bottom:1px solid #222; }
+body { font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.55; padding:24px 16px; }
+.wrap { max-width:880px; margin:0 auto; }
+h1 { font-size:1.4em; color:#fff; margin-bottom:4px; }
+.meta { color:#888; font-size:0.88em; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid #222; }
+h2 { font-size:1.0em; color:#888; letter-spacing:0.06em; margin:28px 0 8px; text-transform:uppercase; font-weight:normal; }
+.fighters { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 24px; }
+.fighter { background:#1a1a1a; padding:14px; border-radius:6px; border-top:3px solid #444; }
+.fighter.c { border-top-color:#ffb84d; }
+.fighter.a { border-top-color:#6699cc; }
+.fighter .nm { font-size:1.1em; color:#fff; font-weight:bold; margin-bottom:4px; }
+.fighter .sub { font-size:0.85em; color:#aaa; }
 
-.hero { background:linear-gradient(135deg,#1e3a5f 0%,#0d1a2a 100%); padding:24px 22px; border-radius:10px; margin:18px 0 24px; }
-.hero .label { font-size:0.75em; color:#7fc8ff; letter-spacing:0.12em; font-weight:bold; margin-bottom:8px; }
-.hero .h { font-size:1.5em; color:#fff; font-weight:bold; line-height:1.4; }
-.hero .h b.l { color:#7fc8ff; }
-.hero .h b.r { color:#ffaa70; }
+table.ufc { width:100%; border-collapse:collapse; font-size:0.93em; margin:6px 0 18px; }
+table.ufc th { background:#1a1a1a; color:#ffb84d; padding:9px; text-align:left; border-bottom:2px solid #333; font-weight:normal; }
+table.ufc td { padding:8px 9px; border-bottom:1px solid #1f1f1f; }
+table.ufc td:nth-child(1) { color:#aaa; width:38%; }
+table.ufc td:nth-child(2), table.ufc td:nth-child(3) { font-variant-numeric:tabular-nums; }
 
-.diptych { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0; }
-.dp { background:#141414; border-radius:10px; padding:18px 18px 16px; border-top:3px solid #444; }
-.dp.dist   { border-top-color:#7fc8ff; }
-.dp.clinch { border-top-color:#ff9a6a; }
-.dp .name { font-size:0.83em; color:#888; letter-spacing:0.05em; margin-bottom:6px; }
-.dp .big  { font-size:2.2em; font-weight:bold; color:#fff; line-height:1; margin-bottom:10px; }
-.dp .big .sub { font-size:0.4em; color:#888; font-weight:normal; margin-left:4px; }
-.dp .bars { display:flex; flex-direction:column; gap:6px; margin-top:8px; }
-.dp .bar { display:flex; align-items:center; gap:8px; font-size:0.85em; }
-.dp .bar .lbl { width:80px; color:#aaa; }
-.dp .bar .fill { flex:1; background:#222; border-radius:3px; height:18px; position:relative; overflow:hidden; }
-.dp .bar .fill > div { height:100%; background:#7fc8ff; border-radius:3px; }
-.dp .bar.r .fill > div { background:#ffaa70; }
-.dp .bar.b .fill > div { background:#888; }
-.dp .bar .n { width:30px; text-align:right; font-weight:bold; color:#fff; }
+.tab-cap { font-size:1.05em; color:#fff; font-weight:bold; margin:24px 0 6px; padding:8px 12px; background:linear-gradient(90deg,#1e3a5f 0%,#1a1a1a 100%); border-left:4px solid #6699cc; border-radius:3px; }
+.tab-cap.total { background:linear-gradient(90deg,#5a3a18 0%,#1a1a1a 100%); border-left-color:#ffb84d; }
 
-.outcomerow { background:#15212a; padding:16px 18px; border-radius:8px; margin:14px 0; border-left:3px solid #7fc8ff; }
-.outcomerow .h { font-size:0.85em; color:#7fc8ff; letter-spacing:0.05em; margin-bottom:8px; }
-.outcomerow .nums { display:flex; gap:18px; align-items:baseline; flex-wrap:wrap; }
-.outcomerow .n { font-size:1.4em; color:#fff; font-weight:bold; }
-.outcomerow .n .lbl { font-size:0.55em; color:#999; font-weight:normal; margin-left:4px; }
-.outcomerow .zero { color:#ff6a3a; }
-
-h2 { font-size:0.85em; color:#888; letter-spacing:0.1em; margin:30px 0 8px; text-transform:uppercase; font-weight:normal; }
-
-.ev { width:100%; border-collapse:collapse; font-size:0.88em; margin:6px 0; }
-.ev th { background:#1a1a1a; color:#ffb84d; padding:8px; text-align:left; border-bottom:2px solid #333; font-weight:normal; }
-.ev td { padding:6px 8px; border-bottom:1px solid #1a1a1a; }
-.ev tr.clinch td { background:rgba(255,154,106,0.05); }
-.ev td.left  { color:#7fc8ff; font-weight:bold; }
-.ev td.right { color:#ffaa70; font-weight:bold; }
-.ev td.side  { color:#aaa; }
-.ev td.na    { color:#444; }
-
-.note { font-size:0.82em; color:#777; margin:8px 0; line-height:1.5; }
+.warn { background:#1f1815; border-left:3px solid #c5664a; padding:12px 16px; border-radius:0 4px 4px 0; margin:20px 0; font-size:0.86em; color:#ccc; }
+.warn .h { color:#ff9a6a; font-weight:bold; font-size:0.82em; letter-spacing:0.05em; margin-bottom:4px; }
 .footer { margin-top:36px; padding-top:14px; border-top:1px solid #222; color:#555; font-size:0.78em; }
 </style></head><body><div class="wrap">
 
-<div class="title">FORENSIC · 손 타격 패턴</div>
-<div class="subtitle">Roque Martinez vs Tserendash Azjargal</div>
-<div class="meta">BC 9 · 2023-11-18 · 라벨 19건 · 60fps 영상 + YOLOv8 pose 자료</div>
+<h1>Forensic Fight Report · Roque Martinez vs Tserendash Azjargal</h1>
+<div class="meta">BLACK COMBAT 9 · 2023-11-18 · 헤비급 · 3R · Roque 만장일치 판정승 (30-27 ×3) · 종료 5R 5:00</div>
 
-<div class="hero">
-<div class="label">▸ 한 줄 발견</div>
-<div class="h">거리에선 <b class="l">왼손</b>만 · 클린치 안에선 <b class="r">오른손</b>만</div>
+<div class="fighters">
+<div class="fighter c">
+<div class="nm">Roque "El Bombardero" Martinez</div>
+<div class="sub">35세 (분석 시점) · 키 188cm · 리치 188cm · 오소독스 · 20-14-2 (BC 9 기준)</div>
 </div>
-
-<div class="diptych">
-<div class="dp dist">
-<div class="name">거리 둔 펀치 (12건)</div>
-<div class="big">8<span class="sub">왼손</span> / 0<span class="sub">오른손</span></div>
-<div class="bars">
-<div class="bar"><span class="lbl">왼손</span><span class="fill"><div style="width:67%;"></div></span><span class="n">8</span></div>
-<div class="bar r"><span class="lbl">오른손</span><span class="fill"><div style="width:0%;"></div></span><span class="n">0</span></div>
-<div class="bar b"><span class="lbl">양손 동시</span><span class="fill"><div style="width:33%;"></div></span><span class="n">4</span></div>
+<div class="fighter a">
+<div class="nm">Tserendash "Azza" Azjargal</div>
+<div class="sub">몽골 · 헤비급 · 스탠스 — 자료 미확보</div>
 </div>
 </div>
 
-<div class="dp clinch">
-<div class="name">클린치 안 손 타격 (4건)</div>
-<div class="big">0<span class="sub">왼손</span> / 4<span class="sub">오른손</span></div>
-<div class="bars">
-<div class="bar"><span class="lbl">왼손</span><span class="fill"><div style="width:0%;"></div></span><span class="n">0</span></div>
-<div class="bar r"><span class="lbl">오른손</span><span class="fill"><div style="width:100%;"></div></span><span class="n">4</span></div>
-</div>
-</div>
-</div>
+<h2>Totals (3R 합계)</h2>
 
-<div class="outcomerow">
-<div class="h">▸ 16건 실제 손 타격 — 결과</div>
-<div class="nums">
-<span class="n zero">0<span class="lbl">클린 적중</span></span>
-<span class="n">11<span class="lbl">가드</span></span>
-<span class="n">3<span class="lbl">회피</span></span>
-<span class="n">1<span class="lbl">부분 적중</span></span>
-<span class="n">1<span class="lbl">미스</span></span>
-</div>
-<div class="note" style="margin-top:8px; color:#bbb;">모두 머리 방향 (몸통·다리 시도 0). Azza의 가드·헤드 무브가 모든 손 타격을 막거나 회피.</div>
-</div>
-
-<h2>베이스 스탠스</h2>
-<div class="outcomerow" style="border-left-color:#5fe07d;">
-<div class="h" style="color:#5fe07d;">▸ 오소독스 (왼발 앞)</div>
-<div class="nums"><span class="n">100%<span class="lbl">R1 시작 5초 (13/13)</span></span></div>
-<div class="note" style="margin-top:6px;">전 경기 흔들림 없는 베이스. 사우스포 전환 사건 없음 (검증된 사건 한해).</div>
-</div>
-
-<h2>사건 디테일 (19건)</h2>
-<table class="ev"><tr><th>경과</th><th>유형</th><th>손</th><th>결과</th></tr>
-<tr class="dist"><td>R1 0:10</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 회피</td></tr>
-<tr class="clinch"><td>R1 0:12</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X</td></tr>
-<tr class="dist"><td>R1 1:18</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 가드</td></tr>
-<tr class="clinch"><td>R1 1:19</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X</td></tr>
-<tr class="clinch"><td>R1 1:19</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
-<tr class="dist"><td>R1 1:36</td><td>거리 펀치</td><td class="side">양손 동시</td><td>머리 가드</td></tr>
-<tr class="dist"><td>R1 1:38</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 회피</td></tr>
-<tr class="dist"><td>R1 1:39</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 가드</td></tr>
-<tr class="dist"><td>R1 1:42</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 미스</td></tr>
-<tr class="dist"><td>R1 3:24</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 부분 적중</td></tr>
-<tr class="dist"><td>R2 0:03</td><td>거리 펀치</td><td class="side">양손 동시</td><td>머리 가드</td></tr>
-<tr class="dist"><td>R2 0:06</td><td>거리 펀치 (셋업)</td><td class="side">양손 동시</td><td>머리 가드 → 클린치</td></tr>
-<tr class="clinch"><td>R2 1:12</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
-<tr class="dist"><td>R2 2:15</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 가드</td></tr>
-<tr class="clinch"><td>R2 4:31</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
-<tr class="clinch"><td>R2 4:33</td><td>클린치 안</td><td class="right">오른손</td><td>머리 가드</td></tr>
-<tr class="clinch"><td>R2 4:41</td><td>클린치 entry</td><td class="na">-</td><td>펀치 X</td></tr>
-<tr class="dist"><td>R2 4:43</td><td>거리 펀치</td><td class="left">왼손</td><td>머리 회피</td></tr>
-<tr class="dist"><td>R2 4:50</td><td>거리 펀치 (셋업)</td><td class="side">양손 동시</td><td>머리 가드 → 클린치</td></tr>
+<table class="ufc">
+<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
+<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
+<tr><td>Sig. Str.</td><td>46 / 64</td><td>6 / 15</td></tr>
+<tr><td>Sig. Str. %</td><td>72%</td><td>40%</td></tr>
+<tr><td>Total Str.</td><td>46 / 64</td><td>6 / 15</td></tr>
+<tr><td>TD</td><td>4 / 6</td><td>0 / 0</td></tr>
+<tr><td>TD %</td><td>67%</td><td>—</td></tr>
+<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
+<tr><td>Rev.</td><td>0</td><td>0</td></tr>
+<tr><td>Ctrl</td><td>0:45</td><td>0:00</td></tr>
 </table>
 
-<div class="note" style="margin-top:14px;">
-<b style="color:#aaa;">"양손 동시" 의미</b> — 사건 시점 ±0.25초 안에 양 wrist가 모두 상대 방향으로 펴짐. 한 손은 펀치, 다른 손은 가드·잡기 동시 동작. 단발 펀치로 어느 손인지 분류 자체가 의미 없는 4건.<br><br>
-<b style="color:#aaa;">"클린치 entry" 의미</b> — 라벨엔 strike로 등록됐지만 60fps에서 보면 펀치가 아니라 클린치 그립 진입 동작에 손을 사용한 사건 3건. 펀치 카운트에서 제외.
+<div class="tab-cap total">Significant Strikes — 부위·위치 (합계)</div>
+
+<table class="ufc">
+<tr><th colspan="3">Significant Strikes — 부위</th></tr>
+<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
+<tr><td>머리 (Head)</td><td>41 / 59</td><td>2 / 10</td></tr>
+<tr><td>몸통 (Body)</td><td>5 / 5</td><td>0 / 1</td></tr>
+<tr><td>다리 (Leg)</td><td>0 / 0</td><td>4 / 4</td></tr>
+<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
+<tr><td>거리 (Distance)</td><td>1 / 19</td><td>6 / 15</td></tr>
+<tr><td>클린치 (Clinch)</td><td>5 / 5</td><td>0 / 0</td></tr>
+<tr><td>그라운드 (Ground)</td><td>40 / 40</td><td>0 / 0</td></tr>
+</table>
+
+<div class="tab-cap">R1</div>
+
+<table class="ufc">
+<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
+<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
+<tr><td>Sig. Str.</td><td>1 / 10</td><td>2 / 8</td></tr>
+<tr><td>Sig. Str. %</td><td>10%</td><td>25%</td></tr>
+<tr><td>Total Str.</td><td>1 / 10</td><td>2 / 8</td></tr>
+<tr><td>TD</td><td>1 / 2</td><td>0 / 0</td></tr>
+<tr><td>TD %</td><td>50%</td><td>—</td></tr>
+<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
+<tr><td>Rev.</td><td>0</td><td>0</td></tr>
+<tr><td>Ctrl</td><td>0:03</td><td>0:00</td></tr>
+</table>
+
+<table class="ufc">
+<tr><th colspan="3">Significant Strikes — 부위</th></tr>
+<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
+<tr><td>머리 (Head)</td><td>1 / 10</td><td>1 / 6</td></tr>
+<tr><td>몸통 (Body)</td><td>0 / 0</td><td>0 / 1</td></tr>
+<tr><td>다리 (Leg)</td><td>0 / 0</td><td>1 / 1</td></tr>
+<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
+<tr><td>거리 (Distance)</td><td>1 / 10</td><td>2 / 8</td></tr>
+<tr><td>클린치 (Clinch)</td><td>0 / 0</td><td>0 / 0</td></tr>
+<tr><td>그라운드 (Ground)</td><td>0 / 0</td><td>0 / 0</td></tr>
+</table>
+
+<div class="tab-cap">R2</div>
+
+<table class="ufc">
+<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
+<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
+<tr><td>Sig. Str.</td><td>5 / 14</td><td>4 / 7</td></tr>
+<tr><td>Sig. Str. %</td><td>36%</td><td>57%</td></tr>
+<tr><td>Total Str.</td><td>5 / 14</td><td>4 / 7</td></tr>
+<tr><td>TD</td><td>1 / 1</td><td>0 / 0</td></tr>
+<tr><td>TD %</td><td>100%</td><td>—</td></tr>
+<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
+<tr><td>Rev.</td><td>0</td><td>0</td></tr>
+<tr><td>Ctrl</td><td>0:42</td><td>0:00</td></tr>
+</table>
+
+<table class="ufc">
+<tr><th colspan="3">Significant Strikes — 부위</th></tr>
+<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
+<tr><td>머리 (Head)</td><td>3 / 12</td><td>1 / 4</td></tr>
+<tr><td>몸통 (Body)</td><td>2 / 2</td><td>0 / 0</td></tr>
+<tr><td>다리 (Leg)</td><td>0 / 0</td><td>3 / 3</td></tr>
+<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
+<tr><td>거리 (Distance)</td><td>0 / 9</td><td>4 / 7</td></tr>
+<tr><td>클린치 (Clinch)</td><td>2 / 2</td><td>0 / 0</td></tr>
+<tr><td>그라운드 (Ground)</td><td>3 / 3</td><td>0 / 0</td></tr>
+</table>
+
+<div class="tab-cap">R3</div>
+
+<table class="ufc">
+<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
+<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
+<tr><td>Sig. Str.</td><td>40 / 40</td><td>0 / 0</td></tr>
+<tr><td>Sig. Str. %</td><td>100%</td><td>—</td></tr>
+<tr><td>Total Str.</td><td>40 / 40</td><td>0 / 0</td></tr>
+<tr><td>TD</td><td>2 / 3</td><td>0 / 0</td></tr>
+<tr><td>TD %</td><td>67%</td><td>—</td></tr>
+<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
+<tr><td>Rev.</td><td>0</td><td>0</td></tr>
+<tr><td>Ctrl</td><td>0:00</td><td>0:00</td></tr>
+</table>
+
+<table class="ufc">
+<tr><th colspan="3">Significant Strikes — 부위</th></tr>
+<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
+<tr><td>머리 (Head)</td><td>37 / 37</td><td>0 / 0</td></tr>
+<tr><td>몸통 (Body)</td><td>3 / 3</td><td>0 / 0</td></tr>
+<tr><td>다리 (Leg)</td><td>0 / 0</td><td>0 / 0</td></tr>
+<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
+<tr><td>거리 (Distance)</td><td>0 / 0</td><td>0 / 0</td></tr>
+<tr><td>클린치 (Clinch)</td><td>3 / 3</td><td>0 / 0</td></tr>
+<tr><td>그라운드 (Ground)</td><td>37 / 37</td><td>0 / 0</td></tr>
+</table>
+
+<div class="warn">
+<div class="h">▸ 자료 한계 (정직)</div>
+1차 라벨 142건 기반. 5fps 라벨링 한계로 다음 항목은 다음 버전에서 정밀화 예정:<br>
+&nbsp;&nbsp;• Azza 손 타격 카운트 — Azza 사건 라벨 부족 (특히 R3 그라운드 시간 안)<br>
+&nbsp;&nbsp;• Ctrl 시간 — 라벨 기반 추정. pose 자료로 정밀 측정 가능<br>
+&nbsp;&nbsp;• Sig Str — 라벨 result(landed/partial/blocked) 분류 60fps 시각 재검증 필요<br>
+&nbsp;&nbsp;• 헛스윙 — 라벨엔 거의 표시 안 됨 (다음 버전에 wrist-target 거리 측정 통합)
 </div>
 
 <div class="footer">
 영상: BLACK COMBAT 9 공식 4K · trimmed.mp4 60fps<br>
-분석: YOLOv8m-pose 풀 추출 (5fps 4500 + 옆모습 6사건 60fps 1440)<br>
-fight_01 (5경기 시리즈 1/5). 손 패턴 시그니처 확정 = 5경기 누적 후
+양식: UFC 공식 fight statistics 카테고리 (KD · Sig Str · TD · Sub Att · Rev · Ctrl + 부위·위치 분해) 카피<br>
+2026-05-18 · fight_01 v0 (5경기 시리즈 1/5)
 </div>
 
 </div></body></html>
