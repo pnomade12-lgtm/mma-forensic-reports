@@ -1,173 +1,177 @@
 <!DOCTYPE html>
 <html lang="ko"><head>
 <meta charset="utf-8">
-<title>Forensic Fight Report · Roque Martinez vs Tserendash Azjargal</title>
+<title>Fight Report Layout</title>
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.55; padding:24px 16px; }
-.wrap { max-width:880px; margin:0 auto; }
-h1 { font-size:1.4em; color:#fff; margin-bottom:4px; }
-.meta { color:#888; font-size:0.88em; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid #222; }
-h2 { font-size:1.0em; color:#888; letter-spacing:0.06em; margin:28px 0 8px; text-transform:uppercase; font-weight:normal; }
-.fighters { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 24px; }
-.fighter { background:#1a1a1a; padding:14px; border-radius:6px; border-top:3px solid #444; }
-.fighter.c { border-top-color:#ffb84d; }
-.fighter.a { border-top-color:#6699cc; }
-.fighter .nm { font-size:1.1em; color:#fff; font-weight:bold; margin-bottom:4px; }
-.fighter .sub { font-size:0.85em; color:#aaa; }
+body { font-family:'Apple SD Gothic Neo','Malgun Gothic','Helvetica Neue',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.5; }
+.wrap { max-width:980px; margin:0 auto; padding:20px 16px 40px; }
 
-table.ufc { width:100%; border-collapse:collapse; font-size:0.93em; margin:6px 0 18px; }
-table.ufc th { background:#1a1a1a; color:#ffb84d; padding:9px; text-align:left; border-bottom:2px solid #333; font-weight:normal; }
-table.ufc td { padding:8px 9px; border-bottom:1px solid #1f1f1f; }
-table.ufc td:nth-child(1) { color:#aaa; width:38%; }
-table.ufc td:nth-child(2), table.ufc td:nth-child(3) { font-variant-numeric:tabular-nums; }
+/* Event header */
+.event-header { text-align:center; padding:14px 0; border-bottom:1px solid #222; margin-bottom:14px; }
+.event-header .event { font-size:0.85em; color:#999; letter-spacing:0.06em; text-transform:uppercase; }
+.event-header .meta { font-size:0.82em; color:#666; margin-top:4px; }
 
-.tab-cap { font-size:1.05em; color:#fff; font-weight:bold; margin:24px 0 6px; padding:8px 12px; background:linear-gradient(90deg,#1e3a5f 0%,#1a1a1a 100%); border-left:4px solid #6699cc; border-radius:3px; }
-.tab-cap.total { background:linear-gradient(90deg,#5a3a18 0%,#1a1a1a 100%); border-left-color:#ffb84d; }
+/* Fight banner */
+.fight-banner { background:#141414; padding:18px; border-radius:6px; margin:14px 0 24px; border:1px solid #222; }
+.fb-row { display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:center; }
+.fb-fighter { padding:6px; }
+.fb-fighter.left  { text-align:right; border-right:none; }
+.fb-fighter.right { text-align:left;  }
+.fb-name { font-size:1.2em; font-weight:bold; color:#fff; }
+.fb-nick { font-size:0.82em; color:#bbb; margin-top:2px; font-style:italic; }
+.fb-record { font-size:0.78em; color:#888; margin-top:6px; letter-spacing:0.05em; }
+.fb-center { font-family:'Roboto Mono',monospace; text-align:center; font-size:0.78em; color:#aaa; padding:0 12px; }
+.fb-center .vs { display:block; font-size:1.2em; color:#666; margin:2px 0; }
+.fb-result-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:14px; padding-top:12px; border-top:1px solid #2a2a2a; }
+.fb-result-strip .item { text-align:center; padding:4px; }
+.fb-result-strip .label { font-size:0.7em; color:#888; letter-spacing:0.08em; text-transform:uppercase; }
+.fb-result-strip .val { font-size:0.95em; color:#fff; margin-top:2px; }
 
-.warn { background:#1f1815; border-left:3px solid #c5664a; padding:12px 16px; border-radius:0 4px 4px 0; margin:20px 0; font-size:0.86em; color:#ccc; }
-.warn .h { color:#ff9a6a; font-weight:bold; font-size:0.82em; letter-spacing:0.05em; margin-bottom:4px; }
-.footer { margin-top:36px; padding-top:14px; border-top:1px solid #222; color:#555; font-size:0.78em; }
-</style></head><body><div class="wrap">
+/* Tabs */
+.tabs { display:flex; gap:0; margin:18px 0 0; border-bottom:1px solid #2a2a2a; flex-wrap:wrap; }
+.tab { padding:10px 16px; font-size:0.88em; color:#888; cursor:pointer; border-bottom:2px solid transparent; user-select:none; }
+.tab:hover { color:#ccc; }
+.tab.active { color:#ffb84d; border-bottom-color:#ffb84d; }
+.tab-content { display:none; padding:14px 0; }
+.tab-content.active { display:block; }
 
-<h1>Forensic Fight Report · Roque Martinez vs Tserendash Azjargal</h1>
-<div class="meta">BLACK COMBAT 9 · 2023-11-18 · 헤비급 · 3R · Roque 만장일치 판정승 (30-27 ×3) · 종료 5R 5:00</div>
+/* Tables */
+.tbl-cap { font-size:0.78em; color:#999; letter-spacing:0.08em; text-transform:uppercase; margin:18px 0 8px; padding-bottom:6px; border-bottom:1px solid #2a2a2a; }
+table.ufc { width:100%; border-collapse:collapse; font-size:0.92em; }
+table.ufc thead th { background:#181818; color:#ffb84d; padding:9px; text-align:center; font-weight:normal; font-size:0.82em; letter-spacing:0.05em; text-transform:uppercase; border-bottom:1px solid #2a2a2a; }
+table.ufc thead th:first-child { text-align:left; padding-left:12px; }
+table.ufc tbody td { padding:8px 9px; border-bottom:1px solid #1a1a1a; text-align:center; font-variant-numeric:tabular-nums; }
+table.ufc tbody td:first-child { text-align:left; color:#aaa; padding-left:12px; }
+table.ufc tbody tr:hover { background:#141414; }
 
-<div class="fighters">
-<div class="fighter c">
-<div class="nm">Roque "El Bombardero" Martinez</div>
-<div class="sub">35세 (분석 시점) · 키 188cm · 리치 188cm · 오소독스 · 20-14-2 (BC 9 기준)</div>
+.round-block { margin-bottom:24px; }
+.round-block h3 { font-size:1.0em; color:#fff; margin:10px 0 6px; padding:6px 12px; background:#1a1a1a; border-left:3px solid #ffb84d; }
+
+.placeholder-banner { background:#1f1815; border-left:3px solid #c5664a; padding:10px 14px; margin:14px 0; font-size:0.83em; color:#bbb; }
+
+.footer { margin-top:32px; padding-top:14px; border-top:1px solid #222; color:#555; font-size:0.76em; text-align:center; }
+</style>
+</head><body>
+<div class="wrap">
+
+<div class="event-header">
+<div class="event">— Event Name —</div>
+<div class="meta">— Date — · — Venue — · — Location —</div>
 </div>
-<div class="fighter a">
-<div class="nm">Tserendash "Azza" Azjargal</div>
-<div class="sub">몽골 · 헤비급 · 스탠스 — 자료 미확보</div>
+
+<div class="fight-banner">
+<div class="fb-row">
+<div class="fb-fighter left">
+<div class="fb-name">— Fighter 1 —</div>
+<div class="fb-nick">"— Nickname —"</div>
+<div class="fb-record">— W-L-D —</div>
+</div>
+<div class="fb-center">
+<div>HW · 3R</div>
+<span class="vs">VS</span>
+<div>Title? —</div>
+</div>
+<div class="fb-fighter right">
+<div class="fb-name">— Fighter 2 —</div>
+<div class="fb-nick">"— Nickname —"</div>
+<div class="fb-record">— W-L-D —</div>
+</div>
+</div>
+<div class="fb-result-strip">
+<div class="item"><div class="label">Method</div><div class="val">—</div></div>
+<div class="item"><div class="label">Round</div><div class="val">—</div></div>
+<div class="item"><div class="label">Time</div><div class="val">—:—</div></div>
+<div class="item"><div class="label">Referee</div><div class="val">—</div></div>
 </div>
 </div>
 
-<h2>Totals (3R 합계)</h2>
+<div class="tabs" id="tabs">
+<div class="tab active" data-tab="totals">Totals</div>
+<div class="tab" data-tab="per-round">Per Round</div>
+<div class="tab" data-tab="sigstr">Significant Strikes</div>
+<div class="tab" data-tab="sigstr-round">Sig. Strikes Per Round</div>
+</div>
 
-<table class="ufc">
-<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
-<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
-<tr><td>Sig. Str.</td><td>46 / 64</td><td>6 / 15</td></tr>
-<tr><td>Sig. Str. %</td><td>72%</td><td>40%</td></tr>
-<tr><td>Total Str.</td><td>46 / 64</td><td>6 / 15</td></tr>
-<tr><td>TD</td><td>4 / 6</td><td>0 / 0</td></tr>
-<tr><td>TD %</td><td>67%</td><td>—</td></tr>
-<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
-<tr><td>Rev.</td><td>0</td><td>0</td></tr>
-<tr><td>Ctrl</td><td>0:45</td><td>0:00</td></tr>
-</table>
+<div class="tab-content active" data-tab="totals">
+<div class="tbl-cap">Totals</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>KD</td><td>—</td><td>—</td></tr><tr><td>Sig. Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>Sig. Str. %</td><td>—</td><td>—</td></tr><tr><td>Total Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>TD</td><td>— / —</td><td>— / —</td></tr><tr><td>TD %</td><td>—</td><td>—</td></tr><tr><td>Sub. Att.</td><td>—</td><td>—</td></tr><tr><td>Rev.</td><td>—</td><td>—</td></tr><tr><td>Ctrl</td><td>—:—</td><td>—:—</td></tr></tbody></table>
+</div>
 
-<div class="tab-cap total">Significant Strikes — 부위·위치 (합계)</div>
+<div class="tab-content" data-tab="per-round">
 
-<table class="ufc">
-<tr><th colspan="3">Significant Strikes — 부위</th></tr>
-<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
-<tr><td>머리 (Head)</td><td>41 / 59</td><td>2 / 10</td></tr>
-<tr><td>몸통 (Body)</td><td>5 / 5</td><td>0 / 1</td></tr>
-<tr><td>다리 (Leg)</td><td>0 / 0</td><td>4 / 4</td></tr>
-<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
-<tr><td>거리 (Distance)</td><td>1 / 19</td><td>6 / 15</td></tr>
-<tr><td>클린치 (Clinch)</td><td>5 / 5</td><td>0 / 0</td></tr>
-<tr><td>그라운드 (Ground)</td><td>40 / 40</td><td>0 / 0</td></tr>
-</table>
+<div class="round-block">
+<h3>Round 1</h3>
+<div class="tbl-cap">Totals</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>KD</td><td>—</td><td>—</td></tr><tr><td>Sig. Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>Sig. Str. %</td><td>—</td><td>—</td></tr><tr><td>Total Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>TD</td><td>— / —</td><td>— / —</td></tr><tr><td>TD %</td><td>—</td><td>—</td></tr><tr><td>Sub. Att.</td><td>—</td><td>—</td></tr><tr><td>Rev.</td><td>—</td><td>—</td></tr><tr><td>Ctrl</td><td>—:—</td><td>—:—</td></tr></tbody></table>
+<div class="tbl-cap">Significant Strikes — Target</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Head</td><td>— / —</td><td>— / —</td></tr><tr><td>Body</td><td>— / —</td><td>— / —</td></tr><tr><td>Leg</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+<div class="tbl-cap">Significant Strikes — Position</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Distance</td><td>— / —</td><td>— / —</td></tr><tr><td>Clinch</td><td>— / —</td><td>— / —</td></tr><tr><td>Ground</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+</div>
 
-<div class="tab-cap">R1</div>
+<div class="round-block">
+<h3>Round 2</h3>
+<div class="tbl-cap">Totals</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>KD</td><td>—</td><td>—</td></tr><tr><td>Sig. Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>Sig. Str. %</td><td>—</td><td>—</td></tr><tr><td>Total Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>TD</td><td>— / —</td><td>— / —</td></tr><tr><td>TD %</td><td>—</td><td>—</td></tr><tr><td>Sub. Att.</td><td>—</td><td>—</td></tr><tr><td>Rev.</td><td>—</td><td>—</td></tr><tr><td>Ctrl</td><td>—:—</td><td>—:—</td></tr></tbody></table>
+<div class="tbl-cap">Significant Strikes — Target</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Head</td><td>— / —</td><td>— / —</td></tr><tr><td>Body</td><td>— / —</td><td>— / —</td></tr><tr><td>Leg</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+<div class="tbl-cap">Significant Strikes — Position</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Distance</td><td>— / —</td><td>— / —</td></tr><tr><td>Clinch</td><td>— / —</td><td>— / —</td></tr><tr><td>Ground</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+</div>
 
-<table class="ufc">
-<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
-<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
-<tr><td>Sig. Str.</td><td>1 / 10</td><td>2 / 8</td></tr>
-<tr><td>Sig. Str. %</td><td>10%</td><td>25%</td></tr>
-<tr><td>Total Str.</td><td>1 / 10</td><td>2 / 8</td></tr>
-<tr><td>TD</td><td>1 / 2</td><td>0 / 0</td></tr>
-<tr><td>TD %</td><td>50%</td><td>—</td></tr>
-<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
-<tr><td>Rev.</td><td>0</td><td>0</td></tr>
-<tr><td>Ctrl</td><td>0:03</td><td>0:00</td></tr>
-</table>
+<div class="round-block">
+<h3>Round 3</h3>
+<div class="tbl-cap">Totals</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>KD</td><td>—</td><td>—</td></tr><tr><td>Sig. Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>Sig. Str. %</td><td>—</td><td>—</td></tr><tr><td>Total Str.</td><td>— / —</td><td>— / —</td></tr><tr><td>TD</td><td>— / —</td><td>— / —</td></tr><tr><td>TD %</td><td>—</td><td>—</td></tr><tr><td>Sub. Att.</td><td>—</td><td>—</td></tr><tr><td>Rev.</td><td>—</td><td>—</td></tr><tr><td>Ctrl</td><td>—:—</td><td>—:—</td></tr></tbody></table>
+<div class="tbl-cap">Significant Strikes — Target</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Head</td><td>— / —</td><td>— / —</td></tr><tr><td>Body</td><td>— / —</td><td>— / —</td></tr><tr><td>Leg</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+<div class="tbl-cap">Significant Strikes — Position</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Distance</td><td>— / —</td><td>— / —</td></tr><tr><td>Clinch</td><td>— / —</td><td>— / —</td></tr><tr><td>Ground</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+</div>
+</div>
 
-<table class="ufc">
-<tr><th colspan="3">Significant Strikes — 부위</th></tr>
-<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
-<tr><td>머리 (Head)</td><td>1 / 10</td><td>1 / 6</td></tr>
-<tr><td>몸통 (Body)</td><td>0 / 0</td><td>0 / 1</td></tr>
-<tr><td>다리 (Leg)</td><td>0 / 0</td><td>1 / 1</td></tr>
-<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
-<tr><td>거리 (Distance)</td><td>1 / 10</td><td>2 / 8</td></tr>
-<tr><td>클린치 (Clinch)</td><td>0 / 0</td><td>0 / 0</td></tr>
-<tr><td>그라운드 (Ground)</td><td>0 / 0</td><td>0 / 0</td></tr>
-</table>
+<div class="tab-content" data-tab="sigstr">
+<div class="tbl-cap">Significant Strikes — Target</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Head</td><td>— / —</td><td>— / —</td></tr><tr><td>Body</td><td>— / —</td><td>— / —</td></tr><tr><td>Leg</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+<div class="tbl-cap">Significant Strikes — Position</div>
+<table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Distance</td><td>— / —</td><td>— / —</td></tr><tr><td>Clinch</td><td>— / —</td><td>— / —</td></tr><tr><td>Ground</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+</div>
 
-<div class="tab-cap">R2</div>
+<div class="tab-content" data-tab="sigstr-round">
+<div class="round-block"><h3>Round 1</h3>
+<div class="tbl-cap">Target</div><table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Head</td><td>— / —</td><td>— / —</td></tr><tr><td>Body</td><td>— / —</td><td>— / —</td></tr><tr><td>Leg</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+<div class="tbl-cap">Position</div><table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Distance</td><td>— / —</td><td>— / —</td></tr><tr><td>Clinch</td><td>— / —</td><td>— / —</td></tr><tr><td>Ground</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+</div>
+<div class="round-block"><h3>Round 2</h3>
+<div class="tbl-cap">Target</div><table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Head</td><td>— / —</td><td>— / —</td></tr><tr><td>Body</td><td>— / —</td><td>— / —</td></tr><tr><td>Leg</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+<div class="tbl-cap">Position</div><table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Distance</td><td>— / —</td><td>— / —</td></tr><tr><td>Clinch</td><td>— / —</td><td>— / —</td></tr><tr><td>Ground</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+</div>
+<div class="round-block"><h3>Round 3</h3>
+<div class="tbl-cap">Target</div><table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Head</td><td>— / —</td><td>— / —</td></tr><tr><td>Body</td><td>— / —</td><td>— / —</td></tr><tr><td>Leg</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+<div class="tbl-cap">Position</div><table class="ufc"><thead><tr><th>Statistic</th><th>Fighter 1</th><th>Fighter 2</th></tr></thead><tbody><tr><td>Distance</td><td>— / —</td><td>— / —</td></tr><tr><td>Clinch</td><td>— / —</td><td>— / —</td></tr><tr><td>Ground</td><td>— / —</td><td>— / —</td></tr></tbody></table>
+</div>
+</div>
 
-<table class="ufc">
-<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
-<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
-<tr><td>Sig. Str.</td><td>5 / 14</td><td>4 / 7</td></tr>
-<tr><td>Sig. Str. %</td><td>36%</td><td>57%</td></tr>
-<tr><td>Total Str.</td><td>5 / 14</td><td>4 / 7</td></tr>
-<tr><td>TD</td><td>1 / 1</td><td>0 / 0</td></tr>
-<tr><td>TD %</td><td>100%</td><td>—</td></tr>
-<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
-<tr><td>Rev.</td><td>0</td><td>0</td></tr>
-<tr><td>Ctrl</td><td>0:42</td><td>0:00</td></tr>
-</table>
-
-<table class="ufc">
-<tr><th colspan="3">Significant Strikes — 부위</th></tr>
-<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
-<tr><td>머리 (Head)</td><td>3 / 12</td><td>1 / 4</td></tr>
-<tr><td>몸통 (Body)</td><td>2 / 2</td><td>0 / 0</td></tr>
-<tr><td>다리 (Leg)</td><td>0 / 0</td><td>3 / 3</td></tr>
-<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
-<tr><td>거리 (Distance)</td><td>0 / 9</td><td>4 / 7</td></tr>
-<tr><td>클린치 (Clinch)</td><td>2 / 2</td><td>0 / 0</td></tr>
-<tr><td>그라운드 (Ground)</td><td>3 / 3</td><td>0 / 0</td></tr>
-</table>
-
-<div class="tab-cap">R3</div>
-
-<table class="ufc">
-<tr><th></th><th>Roque Martinez</th><th>Tserendash Azjargal</th></tr>
-<tr><td>KD (Knockdowns)</td><td>0</td><td>0</td></tr>
-<tr><td>Sig. Str.</td><td>40 / 40</td><td>0 / 0</td></tr>
-<tr><td>Sig. Str. %</td><td>100%</td><td>—</td></tr>
-<tr><td>Total Str.</td><td>40 / 40</td><td>0 / 0</td></tr>
-<tr><td>TD</td><td>2 / 3</td><td>0 / 0</td></tr>
-<tr><td>TD %</td><td>67%</td><td>—</td></tr>
-<tr><td>Sub. Att.</td><td>0</td><td>0</td></tr>
-<tr><td>Rev.</td><td>0</td><td>0</td></tr>
-<tr><td>Ctrl</td><td>0:00</td><td>0:00</td></tr>
-</table>
-
-<table class="ufc">
-<tr><th colspan="3">Significant Strikes — 부위</th></tr>
-<tr><th></th><th>Roque</th><th>Azjargal</th></tr>
-<tr><td>머리 (Head)</td><td>37 / 37</td><td>0 / 0</td></tr>
-<tr><td>몸통 (Body)</td><td>3 / 3</td><td>0 / 0</td></tr>
-<tr><td>다리 (Leg)</td><td>0 / 0</td><td>0 / 0</td></tr>
-<tr><th colspan="3" style="border-top:2px solid #444;">Significant Strikes — 위치</th></tr>
-<tr><td>거리 (Distance)</td><td>0 / 0</td><td>0 / 0</td></tr>
-<tr><td>클린치 (Clinch)</td><td>3 / 3</td><td>0 / 0</td></tr>
-<tr><td>그라운드 (Ground)</td><td>37 / 37</td><td>0 / 0</td></tr>
-</table>
-
-<div class="warn">
-<div class="h">▸ 자료 한계 (정직)</div>
-1차 라벨 142건 기반. 5fps 라벨링 한계로 다음 항목은 다음 버전에서 정밀화 예정:<br>
-&nbsp;&nbsp;• Azza 손 타격 카운트 — Azza 사건 라벨 부족 (특히 R3 그라운드 시간 안)<br>
-&nbsp;&nbsp;• Ctrl 시간 — 라벨 기반 추정. pose 자료로 정밀 측정 가능<br>
-&nbsp;&nbsp;• Sig Str — 라벨 result(landed/partial/blocked) 분류 60fps 시각 재검증 필요<br>
-&nbsp;&nbsp;• 헛스윙 — 라벨엔 거의 표시 안 됨 (다음 버전에 wrist-target 거리 측정 통합)
+<div class="placeholder-banner">
+빈 틀입니다. 모든 숫자는 placeholder (—). 영상 자동 검출 모델이 산출하는 결과가 들어갈 자리.
 </div>
 
 <div class="footer">
-영상: BLACK COMBAT 9 공식 4K · trimmed.mp4 60fps<br>
-양식: UFC 공식 fight statistics 카테고리 (KD · Sig Str · TD · Sub Att · Rev · Ctrl + 부위·위치 분해) 카피<br>
-2026-05-18 · fight_01 v0 (5경기 시리즈 1/5)
+fight_01 layout v1 · interface 확정용 빈 틀 · 2026-05-18
 </div>
 
-</div></body></html>
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+        const target = t.dataset.tab;
+        document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        document.querySelector(`.tab-content[data-tab="${target}"]`).classList.add('active');
+    });
+});
+</script>
+</body></html>
