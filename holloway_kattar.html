@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<title>UFC on ABC 1 — Holloway vs Kattar</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.5; }
+.wrap { max-width:980px; margin:0 auto; padding:20px 16px 40px; }
+.event-header { text-align:center; padding:14px 0; border-bottom:1px solid #222; margin-bottom:14px; }
+.event-header .event { font-size:0.85em; color:#999; letter-spacing:0.06em; text-transform:uppercase; }
+.event-header .meta { font-size:0.82em; color:#666; margin-top:4px; }
+.fight-banner { background:#141414; padding:18px; border-radius:6px; margin:14px 0 24px; border:1px solid #222; }
+.fb-row { display:grid; grid-template-columns:1fr auto 1fr; gap:14px; align-items:center; }
+.fb-fighter { padding:6px; }
+.fb-fighter.left  { text-align:right; }
+.fb-fighter.right { text-align:left;  }
+.fb-name { font-size:1.2em; font-weight:bold; color:#fff; }
+.fb-center { font-family:'Roboto Mono',monospace; text-align:center; font-size:0.78em; color:#aaa; padding:0 12px; }
+.fb-center .vs { display:block; font-size:1.2em; color:#666; margin:2px 0; }
+.fb-result-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:6px; margin-top:14px; padding-top:12px; border-top:1px solid #2a2a2a; }
+.fb-result-strip .item { text-align:center; padding:4px; }
+.fb-result-strip .label { font-size:0.7em; color:#888; letter-spacing:0.08em; text-transform:uppercase; }
+.fb-result-strip .val { font-size:0.95em; color:#fff; margin-top:2px; }
+.tabs { display:flex; gap:0; margin:18px 0 0; border-bottom:1px solid #2a2a2a; flex-wrap:wrap; }
+.tab { padding:10px 16px; font-size:0.88em; color:#888; cursor:pointer; border-bottom:2px solid transparent; user-select:none; }
+.tab:hover { color:#ccc; }
+.tab.active { color:#ffb84d; border-bottom-color:#ffb84d; }
+.tab-content { display:none; padding:14px 0; }
+.tab-content.active { display:block; }
+.tbl-cap { font-size:0.78em; color:#999; letter-spacing:0.08em; text-transform:uppercase; margin:18px 0 8px; padding-bottom:6px; border-bottom:1px solid #2a2a2a; }
+table.ufc { width:100%; border-collapse:collapse; font-size:0.92em; }
+table.ufc thead th { background:#181818; color:#ffb84d; padding:9px; text-align:center; font-weight:normal; font-size:0.82em; letter-spacing:0.05em; text-transform:uppercase; border-bottom:1px solid #2a2a2a; }
+table.ufc thead th:first-child { text-align:left; padding-left:12px; }
+table.ufc tbody td { padding:8px 9px; border-bottom:1px solid #1a1a1a; text-align:center; font-variant-numeric:tabular-nums; }
+table.ufc tbody td:first-child { text-align:left; color:#aaa; padding-left:12px; }
+table.ufc tbody tr:hover { background:#141414; }
+.round-block { margin-bottom:24px; }
+.round-block h3 { font-size:1.0em; color:#fff; margin:10px 0 6px; padding:6px 12px; background:#1a1a1a; border-left:3px solid #ffb84d; }
+.note { background:#15212a; padding:10px 14px; border-left:3px solid #7fc8ff; margin:12px 0; font-size:0.85em; color:#bbb; border-radius:0 4px 4px 0; }
+.nav { text-align:center; padding:12px 0; margin-bottom:8px; }
+.nav a { color:#7fc8ff; text-decoration:none; margin:0 12px; font-size:0.86em; }
+.nav a:hover { color:#fff; }
+.footer { margin-top:32px; padding-top:14px; border-top:1px solid #222; color:#555; font-size:0.76em; text-align:center; }
+</style>
+</head><body><div class="wrap">
+
+<div class="nav">
+<a href="ufc322.html">UFC 322 Della/Makhachev</a> ·
+<a href="holloway_kattar.html">UFC on ABC 1 Holloway/Kattar</a> ·
+<a href="khabib_poirier.html">UFC 242 Khabib/Poirier</a> ·
+<a href="compare.html">시스템 비교</a>
+</div>
+
+<div class="event-header">
+<div class="event">UFC on ABC 1 — Holloway vs Kattar</div>
+<div class="meta">2021-01-16 · Etihad Arena · Abu Dhabi</div>
+</div>
+
+<div class="fight-banner">
+<div class="fb-row">
+<div class="fb-fighter left"><div class="fb-name">Max Holloway</div></div>
+<div class="fb-center"><div>페더급 · 5R · Fight of the Night</div><span class="vs">VS</span><div>UFC stats 카피</div></div>
+<div class="fb-fighter right"><div class="fb-name">Calvin Kattar</div></div>
+</div>
+<div class="fb-result-strip">
+<div class="item"><div class="label">Method</div><div class="val">U-DEC</div></div>
+<div class="item"><div class="label">Round</div><div class="val">5</div></div>
+<div class="item"><div class="label">Time</div><div class="val">5:00</div></div>
+<div class="item"><div class="label">Referee</div><div class="val">Herb Dean</div></div>
+</div>
+</div>
+
+<div class="note">
+ufcstats.com fight detail 양식 그대로 카피. 자료는 UFC 공식 자료 자체. 우리 자체 영상 분석 결과 X.
+</div>
+
+<div class="tabs" id="tabs">
+<div class="tab active" data-tab="totals">Totals</div>
+<div class="tab" data-tab="per-round">Per Round</div>
+<div class="tab" data-tab="sigstr">Significant Strikes</div>
+<div class="tab" data-tab="sigstr-round">Sig. Strikes Per Round</div>
+</div>
+
+<div class="tab-content active" data-tab="totals">
+<div class="tbl-cap">Totals</div>
+<table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>KD</td><td>0</td><td>0</td></tr><tr><td>Sig. str.</td><td>445 of 744</td><td>133 of 283</td></tr><tr><td>Sig. str. %</td><td>59%</td><td>47%</td></tr><tr><td>Total str.</td><td>447 of 746</td><td>134 of 284</td></tr><tr><td>Td</td><td>0 of 1</td><td>0 of 2</td></tr><tr><td>Td %</td><td>0%</td><td>0%</td></tr><tr><td>Sub. att</td><td>0</td><td>0</td></tr><tr><td>Rev.</td><td>0</td><td>0</td></tr><tr><td>Ctrl</td><td>0:27</td><td>0:05</td></tr></tbody></table>
+</div>
+
+<div class="tab-content" data-tab="per-round">
+<div class="round-block"><h3>Round 1</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>KD</td><td>0</td><td>0</td></tr><tr><td>Sig. str.</td><td>56 of 108</td><td>24 of 47</td></tr><tr><td>Sig. str. %</td><td>51%</td><td>51%</td></tr><tr><td>Total str.</td><td>56 of 108</td><td>24 of 47</td></tr><tr><td>Td</td><td>0 of 0</td><td>0 of 0</td></tr><tr><td>Td %</td><td>0%</td><td>0%</td></tr><tr><td>Sub. att</td><td>0</td><td>0</td></tr><tr><td>Rev.</td><td>0</td><td>0</td></tr><tr><td>Ctrl</td><td>0:00</td><td>0:00</td></tr></tbody></table></div><div class="round-block"><h3>Round 2</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>KD</td><td>0</td><td>0</td></tr><tr><td>Sig. str.</td><td>89 of 164</td><td>20 of 48</td></tr><tr><td>Sig. str. %</td><td>54%</td><td>41%</td></tr><tr><td>Total str.</td><td>89 of 164</td><td>20 of 48</td></tr><tr><td>Td</td><td>0 of 0</td><td>0 of 1</td></tr><tr><td>Td %</td><td>0%</td><td>0%</td></tr><tr><td>Sub. att</td><td>0</td><td>0</td></tr><tr><td>Rev.</td><td>0</td><td>0</td></tr><tr><td>Ctrl</td><td>0:00</td><td>0:03</td></tr></tbody></table></div><div class="round-block"><h3>Round 3</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>KD</td><td>0</td><td>0</td></tr><tr><td>Sig. str.</td><td>75 of 139</td><td>29 of 59</td></tr><tr><td>Sig. str. %</td><td>53%</td><td>49%</td></tr><tr><td>Total str.</td><td>77 of 141</td><td>30 of 60</td></tr><tr><td>Td</td><td>0 of 0</td><td>0 of 1</td></tr><tr><td>Td %</td><td>0%</td><td>0%</td></tr><tr><td>Sub. att</td><td>0</td><td>0</td></tr><tr><td>Rev.</td><td>0</td><td>0</td></tr><tr><td>Ctrl</td><td>0:13</td><td>0:00</td></tr></tbody></table></div><div class="round-block"><h3>Round 4</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>KD</td><td>0</td><td>0</td></tr><tr><td>Sig. str.</td><td>141 of 191</td><td>34 of 71</td></tr><tr><td>Sig. str. %</td><td>73%</td><td>47%</td></tr><tr><td>Total str.</td><td>141 of 191</td><td>34 of 71</td></tr><tr><td>Td</td><td>0 of 1</td><td>0 of 0</td></tr><tr><td>Td %</td><td>0%</td><td>0%</td></tr><tr><td>Sub. att</td><td>0</td><td>0</td></tr><tr><td>Rev.</td><td>0</td><td>0</td></tr><tr><td>Ctrl</td><td>0:14</td><td>0:02</td></tr></tbody></table></div><div class="round-block"><h3>Round 5</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>KD</td><td>0</td><td>0</td></tr><tr><td>Sig. str.</td><td>84 of 142</td><td>26 of 58</td></tr><tr><td>Sig. str. %</td><td>59%</td><td>44%</td></tr><tr><td>Total str.</td><td>84 of 142</td><td>26 of 58</td></tr><tr><td>Td</td><td>0 of 0</td><td>0 of 0</td></tr><tr><td>Td %</td><td>0%</td><td>0%</td></tr><tr><td>Sub. att</td><td>0</td><td>0</td></tr><tr><td>Rev.</td><td>0</td><td>0</td></tr><tr><td>Ctrl</td><td>0:00</td><td>0:00</td></tr></tbody></table></div>
+</div>
+
+<div class="tab-content" data-tab="sigstr">
+<div class="tbl-cap">Significant Strikes</div>
+<table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>Sig. str</td><td>445 of 744</td><td>133 of 283</td></tr><tr><td>Sig. str. %</td><td>59%</td><td>47%</td></tr><tr><td>Head</td><td>274 of 553</td><td>99 of 237</td></tr><tr><td>Body</td><td>117 of 133</td><td>16 of 23</td></tr><tr><td>Leg</td><td>54 of 58</td><td>18 of 23</td></tr><tr><td>Distance</td><td>439 of 737</td><td>129 of 279</td></tr><tr><td>Clinch</td><td>6 of 7</td><td>4 of 4</td></tr><tr><td>Ground</td><td>0 of 0</td><td>0 of 0</td></tr></tbody></table>
+</div>
+
+<div class="tab-content" data-tab="sigstr-round">
+<div class="round-block"><h3>Round 1</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>Sig. str</td><td>56 of 108</td><td>24 of 47</td></tr><tr><td>Sig. str. %</td><td>51%</td><td>51%</td></tr><tr><td>Head</td><td>30 of 75</td><td>13 of 34</td></tr><tr><td>Body</td><td>15 of 20</td><td>2 of 2</td></tr><tr><td>Leg</td><td>11 of 13</td><td>9 of 11</td></tr><tr><td>Distance</td><td>56 of 108</td><td>24 of 47</td></tr><tr><td>Clinch</td><td>0 of 0</td><td>0 of 0</td></tr><tr><td>Ground</td><td>0 of 0</td><td>0 of 0</td></tr></tbody></table></div><div class="round-block"><h3>Round 2</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>Sig. str</td><td>89 of 164</td><td>20 of 48</td></tr><tr><td>Sig. str. %</td><td>54%</td><td>41%</td></tr><tr><td>Head</td><td>53 of 127</td><td>14 of 41</td></tr><tr><td>Body</td><td>25 of 25</td><td>4 of 5</td></tr><tr><td>Leg</td><td>11 of 12</td><td>2 of 2</td></tr><tr><td>Distance</td><td>87 of 161</td><td>19 of 47</td></tr><tr><td>Clinch</td><td>2 of 3</td><td>1 of 1</td></tr><tr><td>Ground</td><td>0 of 0</td><td>0 of 0</td></tr></tbody></table></div><div class="round-block"><h3>Round 3</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>Sig. str</td><td>75 of 139</td><td>29 of 59</td></tr><tr><td>Sig. str. %</td><td>53%</td><td>49%</td></tr><tr><td>Head</td><td>53 of 111</td><td>25 of 51</td></tr><tr><td>Body</td><td>13 of 19</td><td>3 of 5</td></tr><tr><td>Leg</td><td>9 of 9</td><td>1 of 3</td></tr><tr><td>Distance</td><td>73 of 137</td><td>28 of 58</td></tr><tr><td>Clinch</td><td>2 of 2</td><td>1 of 1</td></tr><tr><td>Ground</td><td>0 of 0</td><td>0 of 0</td></tr></tbody></table></div><div class="round-block"><h3>Round 4</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>Sig. str</td><td>141 of 191</td><td>34 of 71</td></tr><tr><td>Sig. str. %</td><td>73%</td><td>47%</td></tr><tr><td>Head</td><td>89 of 135</td><td>27 of 63</td></tr><tr><td>Body</td><td>45 of 48</td><td>5 of 6</td></tr><tr><td>Leg</td><td>7 of 8</td><td>2 of 2</td></tr><tr><td>Distance</td><td>139 of 189</td><td>32 of 69</td></tr><tr><td>Clinch</td><td>2 of 2</td><td>2 of 2</td></tr><tr><td>Ground</td><td>0 of 0</td><td>0 of 0</td></tr></tbody></table></div><div class="round-block"><h3>Round 5</h3><table class="ufc"><thead><tr><th></th><th>Max Holloway</th><th>Calvin Kattar</th></tr></thead><tbody><tr><td>Sig. str</td><td>84 of 142</td><td>26 of 58</td></tr><tr><td>Sig. str. %</td><td>59%</td><td>44%</td></tr><tr><td>Head</td><td>49 of 105</td><td>20 of 48</td></tr><tr><td>Body</td><td>19 of 21</td><td>2 of 5</td></tr><tr><td>Leg</td><td>16 of 16</td><td>4 of 5</td></tr><tr><td>Distance</td><td>84 of 142</td><td>26 of 58</td></tr><tr><td>Clinch</td><td>0 of 0</td><td>0 of 0</td></tr><tr><td>Ground</td><td>0 of 0</td><td>0 of 0</td></tr></tbody></table></div>
+</div>
+
+<div class="footer">
+ufcstats.com 카피캣 v2 · 2026-05-19
+</div>
+
+</div>
+<script>
+document.querySelectorAll('.tab').forEach(t => {
+    t.addEventListener('click', () => {
+        const target = t.dataset.tab;
+        document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        document.querySelector(`.tab-content[data-tab="${target}"]`).classList.add('active');
+    });
+});
+</script>
+</body></html>
