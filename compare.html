@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<title>시스템 비교 — 우리 vs 우주박사</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Apple SD Gothic Neo','Malgun Gothic',sans-serif; background:#0a0a0a; color:#e8e8e8; line-height:1.6; padding:24px 16px; }
+.wrap { max-width:920px; margin:0 auto; }
+h1 { font-size:1.5em; color:#fff; margin-bottom:4px; }
+.meta { color:#777; font-size:0.88em; margin-bottom:24px; padding-bottom:14px; border-bottom:1px solid #222; }
+h2 { font-size:1.15em; color:#ffb84d; margin:28px 0 10px; padding-bottom:6px; border-bottom:1px solid #2a2a2a; }
+h3 { font-size:1.0em; color:#7fc8ff; margin:18px 0 6px; }
+p { margin-bottom:10px; color:#ddd; }
+
+.cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:14px 0 22px; }
+.card { background:#141414; border:1px solid #222; border-radius:8px; padding:16px 18px; border-top:3px solid #444; }
+.card.us { border-top-color:#ffb84d; }
+.card.them { border-top-color:#7fc8ff; }
+.card h4 { font-size:1.0em; color:#fff; margin-bottom:6px; }
+.card .sub { font-size:0.82em; color:#888; margin-bottom:10px; }
+.card ul { list-style:none; padding:0; }
+.card li { font-size:0.9em; color:#ccc; padding:5px 0; border-bottom:1px solid #1f1f1f; }
+.card li:last-child { border:0; }
+.card li b { color:#ffd86b; }
+
+table.cmp { width:100%; border-collapse:collapse; margin:14px 0; font-size:0.9em; }
+table.cmp th { background:#1a1a1a; color:#ffb84d; padding:9px; text-align:left; border-bottom:2px solid #2a2a2a; }
+table.cmp td { padding:9px; border-bottom:1px solid #1a1a1a; vertical-align:top; }
+table.cmp td:first-child { color:#aaa; width:25%; }
+table.cmp td.us { color:#ffe0a0; }
+table.cmp td.them { color:#a0d0ff; }
+table.cmp tr:hover { background:#141414; }
+
+.diff { background:#15212a; border-left:3px solid #7fc8ff; padding:14px 16px; margin:14px 0; border-radius:0 6px 6px 0; }
+.diff h3 { color:#7fc8ff; margin-top:0; }
+.ours { background:#1a1815; border-left:3px solid #ffb84d; padding:14px 16px; margin:14px 0; border-radius:0 6px 6px 0; }
+.ours h3 { color:#ffb84d; margin-top:0; }
+
+.footer { margin-top:36px; padding-top:14px; border-top:1px solid #222; color:#555; font-size:0.78em; }
+</style>
+</head><body><div class="wrap">
+
+<h1>시스템 비교 분석</h1>
+<div class="meta">우리 (UFC 카피캣 v1) vs 우주박사 (César Ramírez Pérez · ufcscraper + ufcpredictor) · 2026-05-19</div>
+
+<div class="cards">
+<div class="card us">
+<h4>우리 (카피캣 v1)</h4>
+<div class="sub">사업 — MMA forensic 분석 (코치·매치메이커·팬·선수 본인)</div>
+<ul>
+<li><b>자료 출처</b> · ufcstats.com 직접 scraping (자체 미니 scraper)</li>
+<li><b>출력</b> · HTML 페이지 (UFC fight detail 양식 동일)</li>
+<li><b>구조</b> · Totals · Per Round · Sig Strikes · Sig Strikes Per Round 4 탭</li>
+<li><b>다음 단계</b> · 영상 → 자동 검출 → 22 항목 자동 산출</li>
+<li><b>차별화 목표</b> · 영상 forensic + 인사이트 (셋업 · 콤비 · 약점 입구)</li>
+</ul>
+</div>
+
+<div class="card them">
+<h4>우주박사 (ufcscraper + ufcpredictor)</h4>
+<div class="sub">사업 X · 본업 우주론 박사과정의 사이드 프로젝트</div>
+<ul>
+<li><b>자료 출처</b> · ufcstats.com 자동 scraping + BestFightOdds 베팅 오즈 통합</li>
+<li><b>출력</b> · CSV 파일 (Event · Fight · Fighter · Round 4 테이블)</li>
+<li><b>예측 모델</b> · 2 stacked 신경망 (SymmetricFightNet) → 승률 0~1 → 배팅 가치 -100~100</li>
+<li><b>정확도</b> · 60~64% (배당률 입력 시), 손실함수 = 베팅 수익성 최적화</li>
+<li><b>배포</b> · Hugging Face Spaces 공개 demo</li>
+</ul>
+</div>
+</div>
+
+<h2>항목별 비교</h2>
+<table class="cmp">
+<thead><tr><th>영역</th><th>우리 (카피캣)</th><th>우주박사</th></tr></thead>
+<tbody>
+<tr><td>핵심 목적</td><td class="us">영상 forensic 인사이트 보고서</td><td class="them">베팅 결과 예측 ML 모델</td></tr>
+<tr><td>자료 source</td><td class="us">ufcstats.com</td><td class="them">ufcstats.com + BestFightOdds</td></tr>
+<tr><td>자료 추가 layer</td><td class="us">우리 영상 → 자동 검출 (예정)</td><td class="them">베팅 배당률 통합</td></tr>
+<tr><td>출력</td><td class="us">HTML 페이지 (UFC 양식 동일)</td><td class="them">CSV 파일 + ML 예측 값</td></tr>
+<tr><td>인터페이스</td><td class="us">웹 페이지 — 일반 유저 접근</td><td class="them">CLI · CSV · Hugging Face demo</td></tr>
+<tr><td>22 항목 스키마</td><td class="us">동일 사용</td><td class="them">동일 사용</td></tr>
+<tr><td>UFC 외 단체</td><td class="us">자체 영상으로 확장 가능 (BC · ONE · Bellator)</td><td class="them">UFC only</td></tr>
+<tr><td>예측 기능</td><td class="us">없음 (1단계)</td><td class="them">60~64% 정확도</td></tr>
+<tr><td>영상 분석</td><td class="us">YOLO pose + 자동 검출 (개발 중)</td><td class="them">없음 (통계만)</td></tr>
+<tr><td>인사이트 (셋업 · 콤비 · 약점)</td><td class="us">차별화 목표</td><td class="them">없음</td></tr>
+<tr><td>사업화 상태</td><td class="us">초기 · 사업 모델 구축 중</td><td class="them">없음 · 개인 사이드 프로젝트</td></tr>
+<tr><td>라이센스</td><td class="us">자체 — 결정 필요</td><td class="them">교육용 명시 (사업 사용 협의 필요)</td></tr>
+</tbody>
+</table>
+
+<div class="ours">
+<h3>우리 시스템의 강점</h3>
+<p>UFC 외 단체 (BC · Road FC · ONE · Bellator) 의 영상으로도 같은 22 항목 출력 가능합니다. 우주박사 시스템은 UFC 공식 통계가 있는 경기에만 의존하지만, 우리는 영상 자체에서 자동 검출하기 때문에 영상만 있으면 어떤 단체도 분석 가능. 한국 시장 (블랙컴뱃 · Road FC) 의 사업 기회는 우리만 잡을 수 있습니다.</p>
+<p>또한 코치·매치메이커·선수 본인이 받아 보는 인사이트 layer (셋업 패턴 · 콤비 분석 · 약점 입구) 는 단순 통계 카운트가 아닌 forensic 영역이고, UFC 공식 통계도 이걸 안 제공합니다.</p>
+</div>
+
+<div class="diff">
+<h3>우주박사 시스템에서 가져올 가치</h3>
+<p><b>1. ufcscraper 인프라</b> — UFC 모든 역대 경기 자료를 한 번에 자동 수집 가능합니다. 우리 자체 미니 scraper 를 일일이 만드는 대신 그의 라이브러리를 가져오면 시간 대폭 절약. 단 라이센스 협의 필요.</p>
+<p><b>2. BestFightOdds 통합</b> — 베팅 오즈 자료를 22 항목 옆에 같이 표시하면 매치메이커·도박사용 보고서로 영역 확장 가능합니다.</p>
+<p><b>3. ufcpredictor 예측 layer</b> — 우리 22 항목 + forensic 인사이트 + 예측 60~64% 정확도까지 통합되면 코치진뿐 아니라 도박 시장도 동시 사로잡을 수 있습니다.</p>
+<p><b>4. 데이터 스키마 표준</b> — 4 테이블 (Event · Fight · Fighter · Round) 구조를 우리도 동일 적용하면 두 시스템 자료 호환 가능. 우리 자체 영상 검출 결과도 같은 스키마로 출력하면 ufcpredictor 같은 외부 도구가 우리 자료를 그대로 입력 받을 수 있습니다.</p>
+</div>
+
+<h2>통합 전략 (1 단계 카피캣 이후)</h2>
+<p>이메일 발송 후 César 의 응답에 따라 협업 경로가 갈립니다.</p>
+<p><b>협업 응답 시</b> — ufcscraper 라이센스 합의 + 우리 영상 검출 결과를 그의 스키마로 출력 + 두 시스템 자료 결합 (ufcstats 자료 + 우리 영상 검출 자료 + BestFightOdds + 예측). 통합 보고서가 산업 최강 자료 set 이 됩니다.</p>
+<p><b>응답 없거나 협업 거부 시</b> — 우리 자체 scraper 유지 + 영상 검출 영역으로만 차별화. 그의 ML 예측 모델은 공개 demo (Hugging Face) 를 우리 보고서에 외부 link 로 연결하는 정도. 우리만의 별도 예측 모델 자체 개발은 사업 우선순위에 따라.</p>
+
+<h2>다음 작업</h2>
+<p>우리 사업의 핵심 차별점 (영상 자동 검출) 작업으로 진입합니다. UFC 322 카피캣 페이지는 통계 자료 출력 양식이 작동함을 입증하는 데모입니다. 이제 그 양식에 채워지는 숫자를 ufcstats.com 의 직접 scrape 가 아니라 우리 영상 자동 검출 모델 결과로 채울 수 있어야 1단계가 완성됩니다.</p>
+
+<div class="footer">
+fight_01 (Roque vs Azjargal) 영상으로 자동 검출 모델 1차 시도 · 결과 페이지에 출력 예정 · 2026-05-19
+</div>
+
+</div></body></html>
